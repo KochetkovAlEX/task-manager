@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
@@ -19,9 +20,8 @@ async def get_session():
 
 SessionDep = Annotated[AsyncSession, Depends(get_session)]
 
+
 """SQL"""
-
-
 class Base(DeclarativeBase):
     pass
 
@@ -33,9 +33,8 @@ class TaskModel(Base):
     tag: Mapped[str]
     description: Mapped[str]
 
+
 """Pydantic"""
-
-
 class TaskSchema(BaseModel):
     tag: str
     title: str
@@ -58,5 +57,9 @@ async def add_task(data: TaskSchema, session: SessionDep):
 
 #  TODO : add get request
 @app.get('/tasks')
-async def get_all_tasks():
-    ...
+async def get_all_tasks(session: SessionDep):
+    result = await session.execute(select(TaskModel))
+    tasks = result.scalars().all()
+    return {"data": tasks}
+
+
