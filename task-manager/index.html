@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.22.1/css/uikit.min.css"/>
+
+    </head>
+    <body>
+        <div class="uk-container uk-margin-top">
+        <!-- Основная сетка (2 колонки) -->
+        <div class="uk-grid-medium grid-demo" uk-grid>
+            <!-- Левая колонка (широкая) -->
+            <div class="uk-width-2-3@m">
+                <!-- Верхний блок -->
+               <div class="uk-card uk-card-default uk-card-body">
+                    <h3 class="uk-card-title">Default</h3>
+                    <p>Text Text Text</p>
+                </div>
+                
+                <!-- Нижний блок -->
+                <div class="uk-card uk-card-default uk-card-body uk-margin-top">
+                    <form id="form_add" >
+                        <input class="uk-input uk-form-width-medium uk-form-small" type="text" placeholder="Tag" aria-label="Small">
+                        <div style="display: flex;">
+                            <input class="uk-input uk-form-width-large uk-margin-top" type="text" placeholder="Task" aria-label="Large">
+                            <input class="uk-input uk-form-width-medium uk-form-small uk-margin-left" type="submit">
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+
+            <!-- Правая колонка (узкая) -->
+            <div class="uk-width-1-3@m" id="chart_div">
+                <!-- Верхний блок
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h3 class="uk-card-title">Default</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+                
+                
+                <div class="uk-card uk-card-default uk-card-body">
+                    <h3 class="uk-card-title">Default</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div> 
+                -->
+            </div>
+        </div>
+
+        <!-- Полноширинный нижний блок -->
+        <div class="uk-container uk-margin-top" id="tasks_id">
+            <!-- Заполняется через task_worker.js-->
+        </div>
+    </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.22.1/js/uikit.min.js" 
+                integrity="sha512-qkqzK74IU8H20BO6C40yNpXY7Pfi7KbCs1cArEF/GF6/JLkTmCFuOzrSc9ftzMhVb3AKdSH6gq2TABfc4f8vog==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.22.1/js/uikit-icons.min.js" 
+                integrity="sha512-mOHjJxdayRrS7zneNfoYY+bVEqSmJ4w4s96qNvpCksgSs2RZxhoxNV27SLmq5vJ+JbcjyXrmBEiJPc7TGTcfew==" crossorigin="anonymous"></script>
+
+
+
+        <script src="service/task_worker.js"></script>
+    </body>
+</html>

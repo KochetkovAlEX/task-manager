@@ -1,0 +1,21 @@
+{
+  "name": "Task Blast",
+  "version": "1.0.0",
+  "description": "App for tasks",
+  "main": "task-manager/index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^37.2.4"
+  },
+  "dependencies": {
+    "highlight.js": "^11.11.1",
+    "uikit": "^3.23.11"
+  }
+}
