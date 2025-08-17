@@ -15,19 +15,42 @@
             <div class="uk-width-2-3@m">
                 <!-- Верхний блок -->
                <div class="uk-card uk-card-default uk-card-body">
-                    <h3 class="uk-card-title">Default</h3>
-                    <p>Text Text Text</p>
+                    <h3 class="uk-card-title"><b>Task Blast</b></h3>
+                    <div class="uk-inline">
+                        <p>
+                            
+                            <i>My personal task manager</i>
+                            <span uk-icon="icon: bolt"></span>
+                        </p>
+                        
+                    </div>
+
                 </div>
                 
                 <!-- Нижний блок -->
                 <div class="uk-card uk-card-default uk-card-body uk-margin-top">
-                    <form id="form_add" >
-                        <input class="uk-input uk-form-width-medium uk-form-small" type="text" placeholder="Tag" aria-label="Small">
-                        <div style="display: flex;">
-                            <input class="uk-input uk-form-width-large uk-margin-top" type="text" placeholder="Task" aria-label="Large">
-                            <input class="uk-input uk-form-width-medium uk-form-small uk-margin-left" type="submit">
+                    <form class="uk-form-stacked">
+                        <div class="uk-margin">
+                            <div class="uk-form-controls">
+                                <input class="uk-input uk-width-1-3" id="tag" type="text" placeholder="Enter tag...">
+                            </div>
                         </div>
-                        
+
+                        <div class="uk-margin">
+                            <div class="uk-form-controls">
+                                <input class="uk-input uk-width-1-2" id="title" type="text" placeholder="Enter title...">
+                            </div>
+                        </div>
+
+                        <div class="uk-margin">
+                            <div class="uk-form-controls">
+                                <textarea class="uk-textarea" id="description" rows="2" placeholder="Enter description..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="uk-margin">
+                            <button class="uk-button uk-button-primary" type="submit">ADD</button>
+                        </div>
                     </form>
                 </div>
             </div>

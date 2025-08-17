@@ -1,11 +1,11 @@
-// post
+// post func
 async function send_post_request() { // param = data={}
     const response = await fetch('http://localhost:8000/tasks', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify({id: 3, title:"make post-req", description: "do it!", tag: "ideas"})
+    body: JSON.stringify({id: 3, title:"make post-req", description: "do it!", tag: "ideas"}) // my param
     })
 
     const responseData = await response.json();
@@ -14,6 +14,7 @@ async function send_post_request() { // param = data={}
 
 send_post_request()
 
+// get func
 async function send_get_request() {
     try {
         const response = await fetch('http://localhost:8000/tasks');
