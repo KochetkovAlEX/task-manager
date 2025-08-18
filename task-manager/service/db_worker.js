@@ -5,11 +5,11 @@ async function send_post_request() { // param = data={}
     headers: {
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify({id: 3, title:"make post-req", description: "do it!", tag: "ideas"}) // my param
+    body: JSON.stringify({title:"make post-req", description: "do it!", tag: "ideas"}) // my param
     })
 
     const responseData = await response.json();
-    console.log(responseData);
+    return await responseData;
 }
 
 send_post_request()
@@ -24,12 +24,19 @@ async function send_get_request() {
         }
         
         const result = await response.json();
-        result.data.forEach(element => {
-            console.log(element.id, element.title);
-        });
+        return result
     } catch (error) {
         console.error("Error fetching data:", error);
     }
 }
 
-send_get_request()
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const tasks = await send_get_request();
+        tasks.forEach(task => {
+            create_and_add_tasks(task.tag, task.title, task.description);
+        });
+    } catch (error) {
+        console.error("Could not load tasks:", error);
+    }
+});

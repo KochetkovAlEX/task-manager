@@ -32,7 +32,7 @@ async def add_task(data: TaskSchema, session: SessionDep) -> dict:
 
 
 @app.get('/tasks')
-async def get_all_tasks(session: SessionDep) -> dict:
+async def get_all_tasks(session: SessionDep, response_model=TaskResponse):
     """
     Async func for reading all tasks from DB
     """
