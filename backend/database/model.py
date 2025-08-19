@@ -1,4 +1,4 @@
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 engine = create_async_engine('sqlite+aiosqlite:///tasks.db')
@@ -18,11 +18,7 @@ class TaskModel(Base):
     description: Mapped[str]
     is_complete: Mapped[bool] = mapped_column(default=False)
 
-    # created_at: Mapped[datetime] = mapped_column(server_default=func.now())
 
-
-# TODO: Реализуй механизм перевода активной задачи в список выполненных и добавь отображение выполненных.
-# Скорее всего тебе понадобится сделать на js функцию перерисовки страницы после нажатия кнопки ADD или кнопки "Done"(рабочее название)
 async def get_session():
     """
     Async func for getting session
