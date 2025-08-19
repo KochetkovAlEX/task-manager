@@ -19,7 +19,7 @@ async def setup_database() -> None:
 
 
 @app.post('/tasks')
-async def add_task(data: TaskSchema, session: SessionDep) -> dict:
+async def add_task(data: TaskSchema, session: SessionDep):
     """
     Async func for adding tasks
     """
@@ -32,7 +32,7 @@ async def add_task(data: TaskSchema, session: SessionDep) -> dict:
 
 
 @app.get('/tasks')
-async def get_all_tasks(session: SessionDep, response_model=TaskResponse):
+async def get_all_tasks(session: SessionDep):
     """
     Async func for reading all tasks from DB
     """
@@ -42,3 +42,33 @@ async def get_all_tasks(session: SessionDep, response_model=TaskResponse):
         "status": 200,
         "data": tasks
     }
+
+
+@app.put('/tasks/{task_title}')
+async def change_task_and_save(task_title: str, data: TaskSchema, session: SessionDep):
+    """
+    Async func for update task in DB
+    """
+    task_to_change = await session.scalar(select(TaskModel).where(TaskModel.title == task_title))
+
+    if not task_to_change:
+        return {"message": False, "description": "Can`t find task"}
+
+    task_to_change.title = data.title
+    task_to_change.description = data.description
+    task_to_change.tag = data.tag
+    await session.commit()
+    await session.refresh(task_to_change)
+    return {"message": True}
+
+
+@app.delete("/tasks/{task_title}")
+async def delete_task_by_title(task_title: str, session: SessionDep):
+    """
+    Async func for delete task by title
+    """
+    await session.delete(
+        select(TaskModel).where(TaskModel.title == task_title)
+    )
+    await session.commit()
+    return {"message":True}
