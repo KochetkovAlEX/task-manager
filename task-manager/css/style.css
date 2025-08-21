@@ -2,10 +2,3 @@
     margin: 0;
     padding: 0;
 }
-
- .grid-demo > div {
-    background: #f8f8f8;
-    border: 1px dashed #ccc;
-    min-height: 100px;
-    padding: 15px;
-}
